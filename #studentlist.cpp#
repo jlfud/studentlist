@@ -19,24 +19,7 @@ int main(){
 
   cout << "student list. Commands: print, add, delete, quit" << endl;
 
-  while(true){
-    cout << "input a command: " << endl;
-    cin >> in;
-    if(strcmp(in,"print") == 0){
-      cout << "print" << endl;
-      //call the print function to print out the vector
-    }
-    else if(strcmp(in, "add") == 0){
-      cout << "add" << endl;
-      //prompt user for name, id, and gpa
-      //then, call function to add the student
-    }
-    else if(strcmp(in, "delete") == 0){
-      cout << "delete" << endl;
-      //while true loop, prompt for id, if not in vector, redo loop
-      //otherwise, call delete function
-    }
-    else if(strcmp(in, "quit") == 0){
+  ){
       cout << "bye!" << endl;
       return 0;
     }
