@@ -3,13 +3,14 @@
 #include <vector>
 
 using namespace std;
+//student struct
 struct Student{
   char firstname[15];
   char lastname[15];
   int id;
   double gpa;
 };
-
+//function prototypes
 void print(vector<Student*> students);
 Student* add();
 void deleteStudent(vector<Student*> &students);
@@ -19,7 +20,7 @@ int main(){
   char in[15];
 
   cout << "student list. Commands: print, add, delete, quit" << endl;
-
+  //until the user quits, keep on running
   while(true){
     cout << "input a command: " << endl;
     cin >> in;
@@ -43,8 +44,8 @@ int main(){
   }
   return 0;
 }
-//add, print, delete
 void print(vector<Student*> students){
+  //print out all students in the vector
   for(int i = 0; i < students.size(); i++){
     cout << students[i]->firstname << " ";
     cout << students[i]->lastname << ", ";
@@ -55,6 +56,8 @@ void print(vector<Student*> students){
 Student* add(){
   //add a student
   Student* newStudent = new Student;
+  //initialize a new student, then get names, id, and gpa
+  //return the student so we can push_back on the vector
   cout << "Student first name: " << endl;
   cin >> newStudent->firstname;
   cout << "Student last name: " << endl;
@@ -69,22 +72,22 @@ Student* add(){
 }
 void deleteStudent(vector<Student*> &students){
   int toremove;
-  bool tobreak = false;
+  bool tobreak = false; //for the while looop
   cout << "what is the id of the student you would like to remove? " << endl;
   while(true){
-    cin >> toremove;
+    cin >> toremove; //get the id to remove
     for(int i = 0; i < students.size(); i++){
       if(students[i]->id == toremove){
 	toremove = i;
-	tobreak = true;
+	tobreak = true; //if it's in the vector, we're good
 	break;
       }
     }
     if(tobreak){
-      break;
+      break; //to break out of the while loop
     }
-    cout << "invalid id, try again: " << endl;
+    cout << "invalid id, try again: " << endl; //otherwise, it's invalid
   }
-  cout << students[toremove]->firstname << "was removed" << endl;
-  students.erase(students.begin() + toremove);
+  cout << students[toremove]->firstname << "was removed" << endl; //indicate which student was removed
+  students.erase(students.begin() + toremove); //remove the student
 }
