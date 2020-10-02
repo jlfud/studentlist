@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include <iomanip>
 
 using namespace std;
 //student struct
@@ -46,11 +47,14 @@ int main(){
 }
 void print(vector<Student*> students){
   //print out all students in the vector
+  if(students.size() == 0){
+    cout << "no students!" << endl;
+  }
   for(int i = 0; i < students.size(); i++){
     cout << students[i]->firstname << " ";
     cout << students[i]->lastname << ", ";
     cout << students[i]->id << ", ";
-    cout << students[i]->gpa << endl;
+    cout << fixed << setprecision(2) << students[i]->gpa << endl;
   }
 }
 Student* add(){
@@ -88,6 +92,7 @@ void deleteStudent(vector<Student*> &students){
     }
     cout << "invalid id, try again: " << endl; //otherwise, it's invalid
   }
-  cout << students[toremove]->firstname << "was removed" << endl; //indicate which student was removed
+  cout << students[toremove]->firstname << " was removed" << endl; //indicate which student was removed
+  delete students[toremove];
   students.erase(students.begin() + toremove); //remove the student
 }
